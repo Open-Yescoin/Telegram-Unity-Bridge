@@ -17,18 +17,18 @@ The Package Manager is a work in progress for Unity. Because of that, your packa
   ├── CHANGELOG.md
   ├── Third Party Notices.md
   ├── Editor
-  │   ├── Siykt.Tma.Editor.asmdef
+  │   ├── ATP.TMA.SDK.Editor.asmdef
   │   └── EditorExample.cs
   ├── Runtime
-  │   ├── Siykt.Tma.asmdef
+  │   ├── ATP.TMA.SDK.asmdef
   │   └── RuntimeExample.cs
   ├── Tests
   │   ├── .tests.json
   │   ├── Editor
-  │   │   ├── Siykt.Tma.Editor.Tests.asmdef
+  │   │   ├── ATP.TMA.SDK.Editor.Tests.asmdef
   │   │   └── EditorExampleTest.cs
   │   └── Runtime
-  │        ├── Siykt.Tma.Tests.asmdef
+  │        ├── ATP.TMA.SDK.Tests.asmdef
   │        └── RuntimeExampleTest.cs
   ├── Samples
   │   └── Example
@@ -101,17 +101,17 @@ Use these conventions for naming and storing your assembly definition files to e
 
 * Store Editor-specific code under a root editor assembly definition file:
 
-  `Editor/Siykt.Tma.Editor.asmdef`
+  `Editor/ATP.TMA.SDK.Editor.asmdef`
 
 * Store runtime-specific code under a root runtime assembly definition file:
 
-  `Runtime/Siykt.Tma.asmdef`
+  `Runtime/ATP.TMA.SDK.asmdef`
 
 * Configure related test assemblies for your editor and runtime scripts:
 
-  `Tests/Editor/Siykt.Tma.Editor.Tests.asmdef`
+  `Tests/Editor/ATP.TMA.SDK.Editor.Tests.asmdef`
 
-  `Tests/Runtime/Siykt.Tma.Tests.asmdef`
+  `Tests/Runtime/ATP.TMA.SDK.Tests.asmdef`
 
 To get a more general view of a recommended package folder layout, see [Package layout](https://docs.unity3d.com/Manual/cus-layout.html).
 
