@@ -4,5 +4,9 @@
   "version": "0.1.0",
   "unity": "6000.0",
   "description": "Telegram Bridge SDK for Unity",
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "url": "https://github.com/Siykt/atp.tma.sdk.git",
+    "type": "git"
+  }
 }

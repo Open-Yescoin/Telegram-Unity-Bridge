@@ -166,7 +166,7 @@ namespace ATP.TMA.SDK
         /// Initiates a payment using Ton cryptocurrency.
         /// </summary>
         [DllImport("__Internal")]
-        public static extern void payWithTon(int amount, string comment);
+        public static extern void payWithTon(float amount, string comment);
 
         /// <summary>
         /// Retrieves the launch parameters of the application.

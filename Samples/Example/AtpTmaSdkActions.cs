@@ -4,17 +4,30 @@ using System;
 
 public class AtpTmaSdkActions : MonoBehaviour
 {
+    // Instance of the SDK provider
+    private TGMiniAppGameSDKProvider sdkProviderInstance;
+
     // Reference to a GameObject that can be manipulated through SDK actions
     public GameObject GameAction;
 
+    // Telegram Userinfo
+    public TMAUser userInfo;
+
     private void Start()
     {
+        sdkProviderInstance = UnityEngine.Object.FindFirstObjectByType<TGMiniAppGameSDKProvider>();
+
+        if (sdkProviderInstance == null)
+        {
+            return;
+        }
+
         // Subscribe to SDK events
-        TGMiniAppGameSDKProvider.OnPhoneAccessReceived += HandlePhoneAccess;
-        TGMiniAppGameSDKProvider.OnWriteAccessReceived += HandleWriteAccess;
-        TGMiniAppGameSDKProvider.OnContactReceived += HandleContactReceived;
-        TGMiniAppGameSDKProvider.OnEmojiStatusAccessReceived += HandleEmojiStatusAccess;
-        TGMiniAppGameSDKProvider.OnTextFromClipboardReceived += HandleTextFromClipboard;
+        sdkProviderInstance.OnPhoneAccessReceived += HandlePhoneAccess;
+        sdkProviderInstance.OnWriteAccessReceived += HandleWriteAccess;
+        sdkProviderInstance.OnContactReceived += HandleContactReceived;
+        sdkProviderInstance.OnEmojiStatusAccessReceived += HandleEmojiStatusAccess;
+        sdkProviderInstance.OnTextFromClipboardReceived += HandleTextFromClipboard;
 
         // Initialize the SDK Provider
         InitializeSDKProvider();
@@ -22,12 +35,17 @@ public class AtpTmaSdkActions : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (sdkProviderInstance == null)
+        {
+            return;
+        }
+
         // Unsubscribe from SDK events to prevent memory leaks
-        TGMiniAppGameSDKProvider.OnPhoneAccessReceived -= HandlePhoneAccess;
-        TGMiniAppGameSDKProvider.OnWriteAccessReceived -= HandleWriteAccess;
-        TGMiniAppGameSDKProvider.OnContactReceived -= HandleContactReceived;
-        TGMiniAppGameSDKProvider.OnEmojiStatusAccessReceived -= HandleEmojiStatusAccess;
-        TGMiniAppGameSDKProvider.OnTextFromClipboardReceived -= HandleTextFromClipboard;
+        sdkProviderInstance.OnPhoneAccessReceived -= HandlePhoneAccess;
+        sdkProviderInstance.OnWriteAccessReceived -= HandleWriteAccess;
+        sdkProviderInstance.OnContactReceived -= HandleContactReceived;
+        sdkProviderInstance.OnEmojiStatusAccessReceived -= HandleEmojiStatusAccess;
+        sdkProviderInstance.OnTextFromClipboardReceived -= HandleTextFromClipboard;
     }
 
     /// <summary>
@@ -38,7 +56,7 @@ public class AtpTmaSdkActions : MonoBehaviour
         Debug.Log("Initializing AtpTmaSdkActions");
 
         // Retrieve and log user information
-        TMAUser userInfo = TGMiniAppGameSDKProvider.GetUserInfo();
+        userInfo = TGMiniAppGameSDKProvider.GetUserInfo();
         Debug.Log($"User Info: {userInfo}");
 
         // Retrieve and log launch parameters
@@ -96,7 +114,7 @@ public class AtpTmaSdkActions : MonoBehaviour
     public void PayWithTON()
     {
         Debug.Log("PayWithTON method called");
-        int amount = 100; // Example amount
+        float amount = 0.1f; // Example amount
         string comment = "Payment for services";
         TGMiniAppGameSDKProvider.payWithTon(amount, comment);
     }
