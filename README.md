@@ -42,7 +42,7 @@ The Package Manager is a work in progress for Unity. Because of that, your packa
 ## Develop your package
 Package development works best within the Unity Editor.  Here's how to get started:
 
-1. Enter your package name. The name you choose should contain your default organization followed by the name you typed. For example: `Siykt.Tma`.
+1. Enter your package name. The name you choose should contain your default organization followed by the name you typed. For example: `ATP.TMA.SDK`.
 
 2. [Enter the information](#FillOutFields) for your package in the `package.json` file.
 
