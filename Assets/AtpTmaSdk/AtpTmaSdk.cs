@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace TMAGameSDK
+namespace ATP.TMA.SDK
 {
     /// <summary>
     /// Represents requested contact data retrieved from the Telegram MiniApp Game SDK.
@@ -334,10 +334,10 @@ namespace TMAGameSDK
         /// Converts retrieved user info JSON into a TMAUser object.
         /// </summary>
         /// <returns>A TMAUser object populated from the user info JSON.</returns>
-        public static TMAGameSDK.TMAUser GetUserInfo()
+        public static ATP.TMA.SDK.TMAUser GetUserInfo()
         {
             string json = getUserInfo();
-            return JsonUtility.FromJson<TMAGameSDK.TMAUser>(json);
+            return JsonUtility.FromJson<ATP.TMA.SDK.TMAUser>(json);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace TMAGameSDK
         /// <summary>
         /// Event triggered when contact information is received.
         /// </summary>
-        public event Action<TMAGameSDK.TMARequestedContact> OnContactReceived;
+        public event Action<ATP.TMA.SDK.TMARequestedContact> OnContactReceived;
 
         /// <summary>
         /// Event triggered when emoji status access request completes.
@@ -391,7 +391,7 @@ namespace TMAGameSDK
         public void OnRequestContact(string contactInfoJson)
         {
             // Parse the JSON string into a TMARequestedContact object
-            TMAGameSDK.TMARequestedContact requestedContact = JsonUtility.FromJson<TMAGameSDK.TMARequestedContact>(contactInfoJson);
+            ATP.TMA.SDK.TMARequestedContact requestedContact = JsonUtility.FromJson<ATP.TMA.SDK.TMARequestedContact>(contactInfoJson);
             Debug.Log("User ID: " + requestedContact.contact.userId);
             Debug.Log("Phone Number: " + requestedContact.contact.phoneNumber);
             Debug.Log("First Name: " + requestedContact.contact.firstName);
