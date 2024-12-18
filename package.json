@@ -2,7 +2,7 @@
   "name": "atp.tma.sdk",
   "displayName": "AtpTmaSdk",
   "version": "0.1.0",
-  "unity": "6000.0",
+  "unity": "2018.4",
   "description": "Telegram Bridge SDK for Unity",
   "dependencies": {},
   "repository": {
