@@ -113,7 +113,7 @@ var TGMiniAppGameSDKProvider = {
    * @returns {Boolean} True if the wallet is connected, otherwise false.
    */
   getWalletConnected: function () {
-    return _objGet(window, 'TGMiniAppGameSDKInstance.wallet.isConnected', false);
+    return window.TGMiniAppGameSDKInstance.wallet.isConnected;
   },
 
   /**
@@ -203,6 +203,13 @@ var TGMiniAppGameSDKProvider = {
    */
   miniAppClose: function () {
     window.TGMiniAppGameSDKInstance.miniAppClose();
+  },
+
+  /**
+   * Gets the current mini-app status.
+   */
+  miniAppIsActive: function () {
+    return window.TGMiniAppGameSDKInstance.miniAppIsActive();
   },
 
   /**
@@ -305,6 +312,20 @@ var TGMiniAppGameSDKProvider = {
    */
   requestVibration: function (style) {
     window.TGMiniAppGameSDKInstance.requestVibration(style);
+  },
+
+  /**
+   * Adds the mini-app to the user's home screen.
+   */
+  addToHomeScreen: function () {
+    window.TGMiniAppGameSDKInstance.addToHomeScreen();
+  },
+
+  /**
+   * Requests a check of the home screen status.
+   */
+  requestCheckHomeScreenStatus: function () {
+    window.TGMiniAppGameSDKInstance.requestCheckHomeScreenStatus();
   },
 
   /**
