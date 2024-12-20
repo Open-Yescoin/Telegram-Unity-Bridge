@@ -1,4 +1,12 @@
+<div align="center">
+
 # ATP.TMA.SDK Integration Guide
+
+<a href="https://github.com/Siykt/atp.tma.sdk/blob/main/README.md">Documents</a>
+·
+<a href="https://github.com/Siykt/atp.tma.sdk/blob/main/README-zh.md">中文 README</a>
+
+</div>
 
 This README provides an overview of the **ATP.TMA.SDK**, including how to set up and use the provided C# classes and sample scripts to integrate with a Telegram MiniApp Game SDK environment.
 
