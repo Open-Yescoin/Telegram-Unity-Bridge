@@ -217,6 +217,12 @@ namespace ATP.TMA.SDK
         public static extern void miniAppClose();
 
         /// <summary>
+        /// Gets the current mini-app status.
+        /// </summary>
+        [DllImport("__Internal")]
+        public static extern bool miniAppIsActive();
+
+        /// <summary>
         /// Expands the viewport within the mini-app.
         /// </summary>
         [DllImport("__Internal")]
@@ -295,6 +301,18 @@ namespace ATP.TMA.SDK
         public static extern void requestVibration(int style);
 
         /// <summary>
+        /// Adds the mini-app to the user's home screen.
+        /// </summary>
+        [DllImport("__Internal")]
+        public static extern void addToHomeScreen();
+
+        /// <summary>
+        /// Requests a check of the home screen status.
+        /// </summary>
+        [DllImport("__Internal")]
+        public static extern void requestCheckHomeScreenStatus();
+
+        /// <summary>
         /// Requests access to the user's phone capabilities.
         /// </summary>
         [DllImport("__Internal")]
@@ -339,6 +357,11 @@ namespace ATP.TMA.SDK
             string json = getUserInfo();
             return JsonUtility.FromJson<ATP.TMA.SDK.TMAUser>(json);
         }
+
+        /// <summary>
+        /// Event triggered when the home screen status is checked.
+        /// </summary>
+        public event Action<string> OnCheckHomeScreenStatus;
 
         /// <summary>
         /// Event triggered when phone access request completes.
