@@ -156,3 +156,173 @@ Samples/
 ## Conclusion
 
 The ATP.TMA.SDK simplifies integration between Unity and the Telegram MiniApp Game environment. By following the steps outlined above and customizing the example scripts, you can easily control wallet connections, retrieve user data, manipulate UI elements, share stories, and handle various device capabilities to enrich your users’ in-app experience.
+
+## API Reference
+
+### Methods
+
+#### Wallet and Payment
+
+- **connectWallet()**  
+  Initiates a wallet connection process.
+- **disconnectWallet()**  
+  Disconnects the currently connected wallet.
+- **getWalletConnected() : bool**  
+  Returns `true` if a wallet is currently connected, otherwise `false`.
+- **getWalletAddress() : string**  
+  Returns the currently connected wallet address as a string.
+- **payWithTon(int amount, string comment)**  
+  Initiates a payment using Ton cryptocurrency.
+  - **Parameters:**
+    - `amount`: The amount of Ton to pay.
+    - `comment`: An optional message or note.
+
+#### Application Parameters and User Info
+
+- **getLaunchParams() : string**  
+  Returns the launch parameters passed by the Telegram environment as a JSON string.
+- **getUserInfo() : string**  
+  Returns the user information as a JSON string. Use `TGMiniAppGameSDKProvider.GetUserInfo()` to convert it to a `TMAUser` object.
+- **getStartParam() : string**  
+  Returns a specific `startParam` string provided during the app launch.
+- **getInitDataRaw() : string**  
+  Returns raw initialization data as a string.
+
+#### Mini-App UI Controls
+
+- **miniAppSetHeaderColor(string color)**  
+  Sets the top header bar color of the mini-app.
+  - **Example:** `"#FF5733"`
+- **miniAppSetBgColor(string color)**  
+  Sets the background color of the mini-app.
+- **miniAppSetBottomBarColor(string color)**  
+  Sets the bottom bar color of the mini-app.
+- **miniAppClose()**  
+  Closes the mini-app.
+- **miniAppIsActive**
+  Gets the current mini-app status.
+- **viewportExpand()**  
+  Expands the viewport within the mini-app.
+- **viewportRequestFullscreen()**  
+  Requests fullscreen mode for the mini-app.
+- **backButtonShow()**  
+  Shows a back button in the mini-app interface.
+- **backButtonHide()**  
+  Hides the back button in the mini-app interface.
+- **enableConfirmation()**  
+  Enables confirmation dialogs before certain actions.
+- **disableConfirmation()**  
+  Disables confirmation dialogs.
+- **enableVertical()**  
+  Enforces vertical orientation within the mini-app.
+- **disableVertical()**  
+  Disables vertical orientation within the mini-app.
+
+#### Sharing and Links
+
+- **shareStory(string mediaUrl, string text, string widgetLinkUrl, string widgetLinkName)**  
+  Shares a story that can include media content, text, and an optional widget link.
+- **openTelegramLink(string link)**  
+  Opens a specified Telegram link inside the mini-app environment.
+- **openLink(string link, bool tryBrowser, bool tryInstantView)**  
+  Opens a given link, with optional attempts to open it in a browser or use Instant View.
+- **shareURL(string url, string text)**  
+  Shares a URL along with accompanying text.
+
+#### Device Capabilities and Permissions
+
+- **requestVibration(int style)**  
+  Requests a vibration action on the device (if supported). The `style` parameter may define the vibration pattern.
+- **addToHomeScreen**
+  Adds the mini-app to the user's home screen.
+- **requestCheckHomeScreenStatus**
+  Requests a check of the home screen status.
+- **requestPhoneAccess()**  
+  Requests the user's phone capabilities (if applicable).
+- **requestWriteAccess()**  
+  Requests write access permissions.
+- **requestContact()**  
+  Requests user contact information.
+- **requestEmojiStatusAccess()**  
+  Requests access to manage or view the user's emoji status.
+- **requestSetEmojiStatus(string customEmojiId, int duration)**  
+  Requests to set the user's emoji status for a specified duration.
+  - **Parameters:**
+    - `customEmojiId`: Identifier for the emoji to set.
+    - `duration`: How long the emoji status should remain active, in seconds.
+- **requestReadTextFromClipboard()**  
+  Requests reading text content from the system clipboard.
+
+#### Utility Functions
+
+- **safeStringify(object obj, int space) : string**  
+  Safely serializes an object to a JSON string, handling circular references.
+- **str2Buffer(string str) : string**  
+  Converts a C# string into a memory buffer (UTF-8) for JS/Unity interop.
+- **objGet(object obj, string path, object defaultValue) : string**  
+  Retrieves a nested object property by a path. Returns `defaultValue` if not found.
+
+### Events
+
+**All events are instance-based.** You must reference a `TGMiniAppGameSDKProvider` instance to subscribe or unsubscribe from these events.
+
+- **OnPhoneAccessReceived**:  
+  Invoked when the phone access request completes.  
+  **Signature:** `event Action<string> OnPhoneAccessReceived`
+- **OnWriteAccessReceived**:  
+  Invoked when the write access request completes.  
+  **Signature:** `event Action<string> OnWriteAccessReceived`
+- **OnContactReceived**:  
+  Invoked when contact information is received.  
+  **Signature:** `event Action<TMARequestedContact> OnContactReceived`  
+  **Note:** `TMARequestedContact` includes details like `userId`, `phoneNumber`, `firstName`, and `lastName`.
+- **OnEmojiStatusAccessReceived**:  
+  Invoked when the emoji status access request completes.  
+  **Signature:** `event Action<string> OnEmojiStatusAccessReceived`
+- **OnTextFromClipboardReceived**:  
+  Invoked when text from the clipboard is successfully retrieved.  
+  **Signature:** `event Action<string> OnTextFromClipboardReceived`
+
+### Example Usage
+
+```csharp
+public class MyExample : MonoBehaviour
+{
+    private TGMiniAppGameSDKProvider sdkProvider;
+
+    void Start()
+    {
+        sdkProvider = FindObjectOfType<TGMiniAppGameSDKProvider>();
+        if (sdkProvider != null)
+        {
+            sdkProvider.OnContactReceived += HandleContact;
+        }
+
+        // Connect wallet
+        TGMiniAppGameSDKProvider.connectWallet();
+
+        // Get user info
+        TMAUser user = TGMiniAppGameSDKProvider.GetUserInfo();
+        Debug.Log("User first name: " + user.firstName);
+    }
+
+    void OnDestroy()
+    {
+        if (sdkProvider != null)
+        {
+            sdkProvider.OnContactReceived -= HandleContact;
+        }
+    }
+
+    private void HandleContact(TMARequestedContact contactInfo)
+    {
+        Debug.Log("Received Contact: " + contactInfo.contact.firstName + " " + contactInfo.contact.lastName);
+    }
+}
+```
+
+### Notes
+
+- When calling these methods from within Unity, make sure you are running in a WebGL build and the Telegram MiniApp environment is correctly set up.
+- Ensure that `TGMiniAppGameSDKProvider` is present and active in the scene to handle events and callbacks.
+- Non-static events require an instance of `TGMiniAppGameSDKProvider` to subscribe. Avoid using the class name directly for event handlers.
