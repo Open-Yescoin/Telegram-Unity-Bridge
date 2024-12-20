@@ -16,7 +16,7 @@ ATP.TMA.SDK 旨在简化 Unity 应用与 Telegram MiniApp 游戏环境之间的�
 
 - 管理钱包连接与支付流程。
 - 获取启动参数、用户信息以及初始化数据。
-- 控制迷你应用的用户界面（如标题栏颜色、背景、底栏颜色等）。
+- 控制 MiniApp 的用户界面（如标题栏颜色、背景、底栏颜色等）。
 - 请求设备功能（例如：电话访问权限、写入权限、联系人信息）。
 - 与 Telegram 环境交互（分享动态、打开链接、请求震动、设置表情符号状态等）。
 
@@ -80,7 +80,7 @@ Samples/
   - 钱包管理（连接、断开、获取状态、获取地址）。
   - Ton 支付处理。
   - 获取启动参数、用户信息、启动参数（start params）和原始初始化数据。
-  - 修改迷你应用 UI 元素（头部、背景、底栏颜色等）。
+  - 修改 MiniApp UI 元素（头部、背景、底栏颜色等）。
   - 管理屏幕方向、确认对话框、视口等。
   - 分享内容（故事、URL）、访问设备功能（震动、剪贴板、联系人、电话、写入权限）。
   - 请求和设置表情状态。
@@ -94,7 +94,7 @@ Samples/
   提供实际示例，展示如何：
 
   - 订阅来自 SDK 提供者的事件。
-  - 调用 SDK 方法控制迷你应用环境。
+  - 调用 SDK 方法控制 MiniApp 环境。
   - 处理事件响应，并将结果整合到您的游戏逻辑中。
 
 - **使用方法：**
@@ -113,7 +113,7 @@ Samples/
 
 2. **UI 与屏幕方向控制：**
 
-   - `SetHeaderColor()`、`SetBackgroundColor()`、`SetBottomBarColor()` 根据游戏主题调整迷你应用 UI。
+   - `SetHeaderColor()`、`SetBackgroundColor()`、`SetBottomBarColor()` 根据游戏主题调整 MiniApp UI。
    - `EnableVerticalOrientation()` 或 `DisableVerticalOrientation()` 控制屏幕布局方向。
    - `ShowBackButton()` 或 `HideBackButton()` 控制返回按钮的显示与隐藏。
 
@@ -129,7 +129,7 @@ Samples/
 
 5. **分享与链接：**
    - `ShareStory()`、`ShareURL()` 以实现社交分享功能。
-   - `OpenLink()` 和 `OpenTelegramLink()` 在迷你应用中打开外部内容或 Telegram 链接。
+   - `OpenLink()` 和 `OpenTelegramLink()` 在 MiniApp 中打开外部内容或 Telegram 链接。
 
 ## 疑难解答
 
@@ -205,36 +205,36 @@ Samples/
 - **getInitDataRaw() : string**  
   返回原始的初始化数据字符串。
 
-#### 迷你应用 UI 控制
+#### MiniApp UI 控制
 
 - **miniAppSetHeaderColor(string color)**  
-  设置迷你应用顶部标题栏颜色。
+  设置 MiniApp 顶部标题栏颜色。
 
   - **示例:** `"#FF5733"`
 
 - **miniAppSetBgColor(string color)**  
-  设置迷你应用背景颜色。
+  设置 MiniApp 背景颜色。
 
 - **miniAppSetBottomBarColor(string color)**  
-  设置迷你应用底栏颜色。
+  设置 MiniApp 底栏颜色。
 
 - **miniAppClose()**  
-  关闭迷你应用。
+  关闭 MiniApp 。
 
 - **miniAppIsActive**  
-  获取迷你应用当前状态。
+  获取 MiniApp 当前状态。
 
 - **viewportExpand()**  
-  扩展迷你应用的视口。
+  扩展 MiniApp 的视口。
 
 - **viewportRequestFullscreen()**  
-  请求迷你应用全屏显示。
+  请求 MiniApp 全屏显示。
 
 - **backButtonShow()**  
-  显示迷你应用中的返回按钮。
+  显示 MiniApp 中的返回按钮。
 
 - **backButtonHide()**  
-  隐藏迷你应用中的返回按钮。
+  隐藏 MiniApp 中的返回按钮。
 
 - **enableConfirmation()**  
   启用在某些操作前的确认对话框。
@@ -254,7 +254,7 @@ Samples/
   分享包含媒体内容、文字及可选小部件链接的动态。
 
 - **openTelegramLink(string link)**  
-  在迷你应用环境中打开指定的 Telegram 链接。
+  在 MiniApp 环境中打开指定的 Telegram 链接。
 
 - **openLink(string link, bool tryBrowser, bool tryInstantView)**  
   打开指定链接，可选尝试在浏览器或 Instant View 中打开。
@@ -268,7 +268,7 @@ Samples/
   请求设备震动（若设备支持）。`style` 参数可能用于定义震动模式。
 
 - **addToHomeScreen**  
-  将迷你应用添加到用户的主屏幕。
+  将 MiniApp 添加到用户的主屏幕。
 
 - **requestCheckHomeScreenStatus**  
   请求检查主屏幕状态。
