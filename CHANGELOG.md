@@ -1,4 +1,14 @@
-## 0.1.1 (2024-12-20)
+## [0.1.2](https://github.com/Siykt/atp.tma.sdk/compare/v0.1.1...v0.1.2) (2024-12-20)
+
+
+### Features
+
+* add jslib methods ([1a0e144](https://github.com/Siykt/atp.tma.sdk/commit/1a0e144e0b08f4b1477321d8f186320388b8ec33))
+* add methods docs ([20fbc70](https://github.com/Siykt/atp.tma.sdk/commit/20fbc707094b7a75beb2492be2321ab74084f4aa))
+
+
+
+## [0.1.1](https://github.com/Siykt/atp.tma.sdk/compare/23d28d7e44c81adde1a47a5c70348d30441137a1...v0.1.1) (2024-12-20)
 
 
 ### Bug Fixes
@@ -18,14 +28,3 @@
 
 
 
-# Changelog
-All notable changes to this package will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
-
-## [0.1.0] - 2024-12-04
-
-### This is the first release of *\<TMA\>*.
-
-*Short description of this release*
