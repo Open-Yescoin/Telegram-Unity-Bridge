@@ -46,10 +46,11 @@ var TGMiniAppGameSDKProvider = {
 
         seen.add(value);
 
-        const newValue = Array.isArray(value) ? [] : {};
-        for (const [key2, value2] of Object.entries(value)) {
+        var newValue = Array.isArray(value) ? [] : {};
+        Object.keys(value).forEach(function (key2) {
+          var value2 = value[key2];
           newValue[key2] = _safeStringifyReplacer(seen)(key2, value2);
-        }
+        });
 
         seen.delete(value);
 
@@ -84,8 +85,8 @@ var TGMiniAppGameSDKProvider = {
   objGet: function (obj, path, defaultValue) {
     var keys = Array.isArray(path) ? path : path.replace(/\[(\d+)]/g, '.$1').split('.');
     var result = obj;
-    for (const key of keys) {
-      result = result[key];
+    for (var i = 0; i < keys.length; i++) {
+      result = result[keys[i]];
       if (result === undefined || result === null) {
         return defaultValue;
       }
