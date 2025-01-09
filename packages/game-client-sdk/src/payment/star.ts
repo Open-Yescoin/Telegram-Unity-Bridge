@@ -1,10 +1,10 @@
 /**
- * Telegram Star 支付
+ * Telegram Star Payment
  */
 export class TGStarPayment {
   constructor(readonly projectId: string) {}
 
   async pay(_amount: number) {
-    // 获取tg bot通过createInvoiceLink创建的链接
+    // TODO: Star payment
   }
 }

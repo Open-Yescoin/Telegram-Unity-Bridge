@@ -43,7 +43,7 @@ const particlesOptions: ISourceOptions = {
       },
     },
     number: {
-      value: 0, // 初始没有静态粒子
+      value: 0, // initial number of coins
     },
     opacity: {
       value: 1,
@@ -60,7 +60,7 @@ const particlesOptions: ISourceOptions = {
       },
     },
     tilt: {
-      enable: false, // 倾斜动画
+      enable: false, // tilt effect
     },
     size: {
       value: 15,

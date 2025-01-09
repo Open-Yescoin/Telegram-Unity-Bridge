@@ -41,8 +41,6 @@ export default defineConfig(options => {
       async onSuccess() {
         // copy to unity jslib
         await fs.cp('src/providers/index.js', 'dist/providers/index.jslib');
-        // copy to unity WebGLTemplate
-        await fs.cp('src/templates/default.html', 'dist/index.html');
       },
     },
   ];

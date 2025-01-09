@@ -8,36 +8,36 @@ export { TGMiniAppClient, TGMiniAppWalletClient };
 
 export interface TGMiniAppGameClientSDKContractorParameters {
   /**
-   * 项目 ID
+   * Project ID
    */
   projectId: string;
 
   /**
-   * tonConnect UI 配置
+   * tonConnect UI options
    */
   ui: TonConnectUiCreateOptions;
 }
 
 export interface TGMiniAppGameClientSDKPayments {
   /**
-   * TON 支付
+   * TON payment
    */
   ton: TGTonPayment;
 
   /**
-   * STAR 支付
+   * STAR payment
    */
   star: TGStarPayment;
 }
 
 export class TGMiniAppGameClientSDK extends TGMiniAppClient {
   /**
-   * 钱包
+   * wallet
    */
   readonly wallet = new TGMiniAppWalletClient();
 
   /**
-   * 支付
+   * payments
    */
   readonly payments: TGMiniAppGameClientSDKPayments;
 
