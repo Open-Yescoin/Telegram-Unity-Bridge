@@ -1,19 +1,18 @@
+# [0.2.0](https://github.com/Siykt/atp.tma.sdk/compare/v0.1.3...v0.2.0) (2025-01-09)
+
+
+### Features
+
+* rename and update related files of YesTMABridge, and delete related files of AtpTmaSdk. ([cd2c50c](https://github.com/Siykt/atp.tma.sdk/commit/cd2c50c1280d34d312957ec1e7660f7352ef8e20))
+
+
+
 ## [0.1.3](https://github.com/Siykt/atp.tma.sdk/compare/v0.1.1...v0.1.3) (2024-12-24)
 
 
 ### Bug Fixes
 
 * fixes unity 2022.3.17 not support es6 ([5d61f83](https://github.com/Siykt/atp.tma.sdk/commit/5d61f831799ee179e4167c151ed5370684215098))
-
-
-### Features
-
-* add jslib methods ([1a0e144](https://github.com/Siykt/atp.tma.sdk/commit/1a0e144e0b08f4b1477321d8f186320388b8ec33))
-* add methods docs ([20fbc70](https://github.com/Siykt/atp.tma.sdk/commit/20fbc707094b7a75beb2492be2321ab74084f4aa))
-
-
-
-## [0.1.2](https://github.com/Siykt/atp.tma.sdk/compare/v0.1.1...v0.1.2) (2024-12-20)
 
 
 ### Features
