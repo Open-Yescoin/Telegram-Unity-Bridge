@@ -1,12 +1,12 @@
 {
-  "name": "atp.tma.sdk",
-  "displayName": "AtpTmaSdk",
-  "version": "0.1.3",
+  "name": "yes.tma.bridge",
+  "displayName": "YesTMABridge",
+  "version": "0.2.0",
   "unity": "2020.3",
-  "description": "Telegram Bridge SDK for Unity",
+  "description": "Telegram Miniapp Bridge SDK for Unity is a powerful SDK developed by Yescoin designed to bridge the functionality of Telegram Miniapps with Unity, enabling seamless integration between your Unity-based applications and the Telegram Miniapp platform.",
   "dependencies": {},
   "repository": {
-    "url": "https://github.com/Siykt/atp.tma.sdk.git",
+    "url": "https://github.com/Open-Yescoin/Telegram-Unity-Bridge.git",
     "type": "git"
   }
 }

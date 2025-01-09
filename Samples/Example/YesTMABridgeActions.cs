@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using ATP.TMA.SDK;
+using YesTMABridge;
 using System;
 
-public class AtpTmaSdkActions : MonoBehaviour
+public class YesTMABridgeActions : MonoBehaviour
 {
     // Instance of the SDK provider
     private TGMiniAppGameSDKProvider sdkProviderInstance;

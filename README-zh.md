@@ -1,18 +1,18 @@
 <div align="center">
 
-# ATP.TMA.SDK 集成指南
+# Telegram-Unity-Bridge 集成指南
 
-<a href="https://github.com/Siykt/atp.tma.sdk/blob/main/README.md">Documents</a>
+<a href="https://github.com/Open-Yescoin/Telegram-Unity-Bridge/blob/main/README.md">Documents</a>
 ·
-<a href="https://github.com/Siykt/atp.tma.sdk/blob/main/README-zh.md">中文 README</a>
+<a href="https://github.com/Open-Yescoin/Telegram-Unity-Bridge/blob/main/README-zh.md">中文 README</a>
 
 </div>
 
-本 README 将为您介绍 **ATP.TMA.SDK**，包括如何在 Unity 中设置并使用所提供的 C# 类与示例脚本，以便与 Telegram MiniApp 游戏 SDK 环境进行集成。
+本 README 将为您介绍 **Telegram-Unity-Bridge**，包括如何在 Unity 中设置并使用所提供的 C# 类与示例脚本，以便与 Telegram MiniApp 游戏 SDK 环境进行集成。
 
 ## 概览
 
-ATP.TMA.SDK 旨在简化 Unity 应用与 Telegram MiniApp 游戏环境之间的通信。通过在 C# 中使用 `[DllImport("__Internal")]` 来绑定定义在 jslib 文件中的各种 JavaScript 函数，这些函数可让 Unity 开发者：
+Telegram-Unity-Bridge 旨在简化 Unity 应用与 Telegram MiniApp 游戏环境之间的通信。通过在 C# 中使用 `[DllImport("__Internal")]` 来绑定定义在 jslib 文件中的各种 JavaScript 函数，这些函数可让 Unity 开发者：
 
 - 管理钱包连接与支付流程。
 - 获取启动参数、用户信息以及初始化数据。
@@ -35,12 +35,12 @@ ATP.TMA.SDK 旨在简化 Unity 应用与 Telegram MiniApp 游戏环境之间的�
 
 ```
 Runtime/
-  AtpTmaSdk/
-    AtpTmaSdk.cs
+  YesTMABridge/
+    YesTMABridge.cs
     index.jslib
 Samples/
   Example/
-    AtpTmaSdkActions.cs
+    YesTMABridgeActions.cs
 ```
 
 ## 快速开始
@@ -50,20 +50,20 @@ Samples/
 
 2. **引入 C# 封装类：**
 
-   - `AtpTmaSdk.cs`：包含 `[DllImport]` 声明，用于在 C# 与 JavaScript 间建立桥梁。
-   - `AtpTmaSdkActions.cs`（示例脚本）：展示如何调用 SDK 方法并订阅相关事件。
+   - `YesTMABridge.cs`：包含 `[DllImport]` 声明，用于在 C# 与 JavaScript 间建立桥梁。
+   - `YesTMABridgeActions.cs`（示例脚本）：展示如何调用 SDK 方法并订阅相关事件。
 
 3. **在场景中添加 TGMiniAppGameSDKProvider 组件：**
 
    - 在 Unity 场景中创建一个空的 `GameObject`。
-   - 将 `AtpTmaSdk.cs` 附加到该 GameObject 上。
+   - 将 `YesTMABridge.cs` 附加到该 GameObject 上。
    - 这样可确保提供者（provider）处理回调并维护事件订阅。
 
-4. **配置并使用示例脚本（AtpTmaSdkActions）：**
+4. **配置并使用示例脚本（YesTMABridgeActions）：**
 
-   - 将 `AtpTmaSdkActions.cs` 附加到另一个 GameObject 上。
-   - 在 `AtpTmaSdkActions.cs` 中，会通过 `FindObjectOfType<TGMiniAppGameSDKProvider>()` 在运行时获取 `TGMiniAppGameSDKProvider` 引用。
-   - 确保在 `AtpTmaSdkActions` 初始化前，场景中已存在 `TGMiniAppGameSDKProvider`。
+   - 将 `YesTMABridgeActions.cs` 附加到另一个 GameObject 上。
+   - 在 `YesTMABridgeActions.cs` 中，会通过 `FindObjectOfType<TGMiniAppGameSDKProvider>()` 在运行时获取 `TGMiniAppGameSDKProvider` 引用。
+   - 确保在 `YesTMABridgeActions` 初始化前，场景中已存在 `TGMiniAppGameSDKProvider`。
 
 5. **测试集成效果：**
    - 当在兼容的环境（Telegram MiniApp 环境）中运行 WebGL 构建时，像 `connectWallet()` 或 `payWithTon()` 这类调用会触发相应的 JS 函数。
@@ -88,7 +88,7 @@ Samples/
 - **事件：**  
   提供者定义了一些事件（例如 `OnContactReceived`、`OnPhoneAccessReceived`），由 JavaScript 回调触发。可在您的脚本中订阅这些事件，处理异步响应。
 
-### AtpTmaSdkActions（示例脚本）
+### YesTMABridgeActions（示例脚本）
 
 - **作用：**
   提供实际示例，展示如何：
@@ -165,7 +165,7 @@ Samples/
 
 ## 结论
 
-通过 ATP.TMA.SDK，您可以轻松实现 Unity 与 Telegram MiniApp 游戏环境之间的集成。按上述步骤操作，并基于示例脚本进行定制，您即可轻松实现钱包连接、获取用户数据、操控 UI、分享动态、调用设备功能，从而为用户带来更丰富的应用内体验。
+通过 Telegram-Unity-Bridge，您可以轻松实现 Unity 与 Telegram MiniApp 游戏环境之间的集成。按上述步骤操作，并基于示例脚本进行定制，您即可轻松实现钱包连接、获取用户数据、操控 UI、分享动态、调用设备功能，从而为用户带来更丰富的应用内体验。
 
 ## API 参考
 
