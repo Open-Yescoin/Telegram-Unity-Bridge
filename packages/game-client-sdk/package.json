@@ -1,0 +1,54 @@
+{
+  "name": "@open-yes/game-client-sdk",
+  "version": "0.0.1",
+  "author": "Siykt",
+  "type": "module",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "vitest",
+    "lint": "eslint src --fix --ext .ts"
+  },
+  "sideEffects": false,
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@atp-tools/lib": "^0.12.0",
+    "@telegram-apps/sdk": "^2.11.0",
+    "@ton/core": "^0.59.0",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^15.1.0",
+    "@tonconnect/sdk": "^3.0.5",
+    "@tonconnect/ui": "^2.0.9",
+    "ioredis": "^5.4.1",
+    "lodash-es": "^4.17.21",
+    "ton": "^13.9.0"
+  },
+  "devDependencies": {
+    "@open-yes/eslint-config": "workspace:*",
+    "@open-yes/typescript-config": "workspace:*",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.9.0",
+    "axios": "^1.7.7",
+    "eslint": "^8.57.0",
+    "terser": "^5.36.0",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3"
+  }
+}

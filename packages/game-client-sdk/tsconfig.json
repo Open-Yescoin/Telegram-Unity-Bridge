@@ -1,0 +1,13 @@
+{
+  "extends": "@open-yes/typescript-config/esm-node.json",
+  "include": ["src", "tests"],
+  "exclude": ["dist", "build", "node_modules"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "./dist"
+  }
+}
