@@ -1,7 +1,7 @@
 {
   "name": "@open-yes/game-client-sdk",
   "version": "0.0.2",
-  "author": "Siykt",
+  "author": "Open-Yescoin",
   "type": "module",
   "scripts": {
     "dev": "tsup --watch",

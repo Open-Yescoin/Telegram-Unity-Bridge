@@ -1,9 +1,6 @@
 {
   "name": "vite-react-template",
-  "author": {
-    "name": "Siykt",
-    "email": "cnsiykt@163.com"
-  },
+  "author": "Open-Yescoin",
   "private": true,
   "version": "0.0.0",
   "type": "module",

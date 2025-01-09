@@ -1,6 +1,7 @@
 {
   "name": "yes.tma.bridge",
   "displayName": "YesTMABridge",
+  "author": "Open-Yescoin",
   "version": "0.2.0",
   "unity": "2020.3",
   "description": "Telegram Miniapp Bridge SDK for Unity is a powerful SDK developed by Yescoin designed to bridge the functionality of Telegram Miniapps with Unity, enabling seamless integration between your Unity-based applications and the Telegram Miniapp platform.",
