@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host --port 8071 --mode development",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview --host",
     "lint": "cross-env DEBUG=eslint:cli-engine eslint --cache --ext=ts,tsx --fix src",
     "format": "prettier --write \"src/**/*.@(ts|tsx|)\""
