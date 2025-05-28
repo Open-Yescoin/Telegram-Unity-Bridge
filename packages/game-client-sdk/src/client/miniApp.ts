@@ -1,4 +1,4 @@
-import { safeStringify } from '@atp-tools/lib';
+import { safeStringify } from '../lib/safeStringify.js';
 import type { RGB, OpenLinkBrowser, LaunchParams, HeaderColorKey } from '@telegram-apps/sdk';
 import {
   backButton,
@@ -29,7 +29,7 @@ import {
   cloudStorage,
   invoice,
   addToHomeScreen,
-  checkHomeScreenStatus,
+  checkHomeScreenStatus
 } from '@telegram-apps/sdk';
 import { get } from 'lodash-es';
 
@@ -66,7 +66,7 @@ export class TGMiniAppClient {
     setEmojiStatus: setEmojiStatus as typeof setEmojiStatus,
     readTextFromClipboard: readTextFromClipboard as typeof readTextFromClipboard,
     addToHomeScreen: addToHomeScreen as typeof addToHomeScreen,
-    checkHomeScreenStatus: checkHomeScreenStatus as typeof checkHomeScreenStatus,
+    checkHomeScreenStatus: checkHomeScreenStatus as typeof checkHomeScreenStatus
   };
 
   constructor() {
@@ -126,7 +126,7 @@ export class TGMiniAppClient {
   }
 
   miniAppIsActive() {
-    return this.methods.miniApp.isActive()
+    return this.methods.miniApp.isActive();
   }
 
   viewportExpand() {
@@ -164,7 +164,7 @@ export class TGMiniAppClient {
   shareStory(mediaUrl: string, text?: string, widgetLinkUrl?: string, widgetLinkName?: string) {
     this.methods.shareStory.ifAvailable(mediaUrl, {
       text,
-      widgetLink: widgetLinkUrl ? { url: widgetLinkUrl, name: widgetLinkName } : undefined,
+      widgetLink: widgetLinkUrl ? { url: widgetLinkUrl, name: widgetLinkName } : undefined
     });
   }
 

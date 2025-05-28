@@ -17,16 +17,14 @@ export class TGTonPayment {
   /**
    * pay
    * @param tonAmount ton amount
-   * @param comment comment
    * @param address address
+   * @param comment comment
    */
-  async pay(tonAmount: number, comment?: string, address?: string) {
-    // TODO: The collection address should be available through projectId.
-    address ??= 'UQAS9XVpwZM_wGDVCR08CXS5wTDaNZXv02mBNcW3tVi0r6Oh';
+  async pay(tonAmount: number, address: string, comment?: string) {
     return this.wallet.sendTransferWithComment({
       // 10m deadline
       validUntil: Math.floor(Date.now() / 1000) + 60 * 10,
-      messages: [{ address, amount: toNano(tonAmount).toString(), comment }],
+      messages: [{ address, amount: toNano(tonAmount).toString(), comment }]
     });
   }
 }

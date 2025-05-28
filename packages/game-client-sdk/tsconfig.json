@@ -1,6 +1,6 @@
 {
   "extends": "@open-yes/typescript-config/esm-node.json",
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "tsup.config.ts"],
   "exclude": ["dist", "build", "node_modules"],
   "ts-node": {
     "esm": true,

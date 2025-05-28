@@ -29,7 +29,6 @@
     }
   },
   "dependencies": {
-    "@atp-tools/lib": "^0.12.0",
     "@telegram-apps/sdk": "^2.11.0",
     "@ton/core": "^0.59.0",
     "@ton/crypto": "^3.3.0",

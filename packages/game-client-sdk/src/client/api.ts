@@ -1,6 +1,5 @@
 import type { AxiosRequestConfig, AxiosInstance } from 'axios';
 import axios from 'axios';
-import PackageJson from '../../package.json';
 
 /**
  * API Request Config, extends from AxiosRequestConfig
@@ -43,9 +42,8 @@ export class TGMiniAppGameSDKApiClient {
       baseURL,
       timeout: 60000,
       headers: {
-        'TMA-GMC-SDK-VERSION': PackageJson.version,
-        'TMA-GMC-SDK-PROJECT-ID': projectId,
-      },
+        'TMA-GMC-SDK-PROJECT-ID': projectId
+      }
     });
 
     this.instance.interceptors.request.use(config => {

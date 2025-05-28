@@ -69,8 +69,8 @@ export class TGMiniAppWalletClient {
       ...request,
       messages: request.messages.map(message => ({
         ...message,
-        payload: message.comment ? this.buildComment(message.comment) : undefined,
-      })),
+        payload: message.comment ? this.buildComment(message.comment) : undefined
+      }))
     });
   }
 
