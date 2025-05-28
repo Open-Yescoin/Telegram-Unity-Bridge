@@ -1,10 +1,22 @@
-import { defineConfig, PluginOption } from 'vite';
+import { defineConfig, Plugin, PluginOption } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import UnoCSS from 'unocss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import Unfonts from 'unplugin-fonts/vite';
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { nodePolyfills, PolyfillOptions } from 'vite-plugin-node-polyfills'
+
+const nodePolyfillsFix = (options?: PolyfillOptions | undefined): Plugin => {
+  return {
+    ...nodePolyfills(options),
+    resolveId(source: string) {
+      const m = /^vite-plugin-node-polyfills\/shims\/(buffer|global|process)$/.exec(source)
+      if (m) {
+        return `node_modules/vite-plugin-node-polyfills/shims/${m[1]}/dist/index.cjs`
+      }
+    }
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -25,7 +37,7 @@ export default defineConfig(({ command, mode }) => {
         ],
       },
     }),
-    nodePolyfills({
+    nodePolyfillsFix({
       include: ['path', 'stream', 'util'],
       exclude: ['http'],
       globals: {
