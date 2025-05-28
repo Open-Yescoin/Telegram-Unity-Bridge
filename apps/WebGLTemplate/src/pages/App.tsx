@@ -19,12 +19,14 @@ window.TGMiniAppGameSDKInstance = new TGMiniAppGameClientSDK({
   },
 });
 
+const BASE_URL = 'https://pub-3f24abf8d919470d84a07be174835a7e.r2.dev/telegram-unity-bridge';
+
 const App = () => {
   const { unityProvider, loadingProgression, isLoaded } = useUnityContext({
-    loaderUrl: '/Build/dist.loader.js',
-    dataUrl: '/Build/dist.data',
-    frameworkUrl: '/Build/dist.framework.js',
-    codeUrl: '/Build/dist.wasm',
+    loaderUrl: `${BASE_URL}/Build/dist.loader.js`,
+    dataUrl: `${BASE_URL}/Build/dist.data`,
+    frameworkUrl: `${BASE_URL}/Build/dist.framework.js`,
+    codeUrl: `${BASE_URL}/Build/dist.wasm`,
     companyName: 'Yescoin - Unity Game Template',
     productName: 'Yescoin',
     productVersion: '0.1',
