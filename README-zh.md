@@ -24,10 +24,7 @@ Telegram-Unity-Bridge 旨在简化 Unity 应用与 Telegram MiniApp 游戏环境
 
 - Unity 2020.3 及以上版本（建议使用 LTS 版本）。
 - 需要将目标平台设置为 WebGL，因为 SDK 利用 JavaScript 库和特定于浏览器的能力。
-- 将 JavaScript 库文件（`.jslib`）集成到 Unity 项目中。  
-  请确保您已包含：
-  - `index.jslib`（包含 JavaScript 方法）。
-  - 与其对应的 C# 脚本。
+- **WebGL 模板支持**：我们提供了基于 React 实现的 WebGL 模板，用于优化 Telegram MiniApp 环境下的界面适配。您可以在 [apps/WebGLTemplate 目录](https://github.com/Open-Yescoin/Telegram-Unity-Bridge/tree/main/apps/WebGLTemplate) 中找到相关资源。
 
 ## 文件夹结构
 
@@ -43,29 +40,45 @@ Samples/
     YesTMABridgeActions.cs
 ```
 
-## 快速开始
+## 安装方式
+
+### 通过 Unity Package Manager 安装
+
+1. 在 Unity 编辑器菜单栏中选择 **Window > Package Manager**。
+2. 点击左上角的 **+** 按钮，选择 **Add package from git URL**。
+3. 输入以下 Git URL：
+   ```
+   https://github.com/Open-Yescoin/Telegram-Unity-Bridge.git?path=/packages/YesTMABridge
+   ```
+4. 点击 **Add**，等待包管理器完成安装。
+
+### 手动安装（备选）
 
 1. **引入 JavaScript 库：**  
    将 `index.jslib` 放置在 `Runtime/` 文件夹下。Unity 会在 WebGL 构建时自动关联该文件。
 
 2. **引入 C# 封装类：**
-
    - `YesTMABridge.cs`：包含 `[DllImport]` 声明，用于在 C# 与 JavaScript 间建立桥梁。
    - `YesTMABridgeActions.cs`（示例脚本）：展示如何调用 SDK 方法并订阅相关事件。
 
-3. **在场景中添加 TGMiniAppGameSDKProvider 组件：**
+## 快速开始
 
+1. **配置 WebGL 模板（重要）：**
+   - 将提供的 `WebGLTemplate` 文件夹复制到您项目的 `Assets/WebGLTemplates` 目录下。
+   - 打开 **File > Build Settings**，选择 WebGL 平台，点击 **Player Settings**。
+   - 在 **Player Settings > Resolution and Presentation** 下，选择 "Telegram-Unity-Bridge" 模板。
+
+2. **在场景中添加 TGMiniAppGameSDKProvider 组件：**
    - 在 Unity 场景中创建一个空的 `GameObject`。
    - 将 `YesTMABridge.cs` 附加到该 GameObject 上。
    - 这样可确保提供者（provider）处理回调并维护事件订阅。
 
-4. **配置并使用示例脚本（YesTMABridgeActions）：**
-
+3. **配置并使用示例脚本（YesTMABridgeActions）：**
    - 将 `YesTMABridgeActions.cs` 附加到另一个 GameObject 上。
    - 在 `YesTMABridgeActions.cs` 中，会通过 `FindObjectOfType<TGMiniAppGameSDKProvider>()` 在运行时获取 `TGMiniAppGameSDKProvider` 引用。
    - 确保在 `YesTMABridgeActions` 初始化前，场景中已存在 `TGMiniAppGameSDKProvider`。
 
-5. **测试集成效果：**
+4. **测试集成效果：**
    - 当在兼容的环境（Telegram MiniApp 环境）中运行 WebGL 构建时，像 `connectWallet()` 或 `payWithTon()` 这类调用会触发相应的 JS 函数。
    - 类似 `OnPhoneAccessReceived`、`OnWriteAccessReceived`、`OnContactReceived` 等事件会由 JS 环境触发并在 C# 中得到响应。
 

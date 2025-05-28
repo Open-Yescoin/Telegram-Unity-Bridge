@@ -24,6 +24,7 @@ The Telegram-Unity-Bridge is designed to facilitate communication between a Unit
 
 - Unity 2020.3 or newer (LTS recommended).
 - A WebGL build target, as the SDK uses JavaScript libraries and browser-specific capabilities.
+- **WebGL Template Support**: We provide a React-based WebGL template for optimized interface adaptation in the Telegram MiniApp environment. You can find the related resources in the [apps/WebGLTemplate directory](https://github.com/Open-Yescoin/Telegram-Unity-Bridge/tree/main/apps/WebGLTemplate).
 - The JavaScript library file (`.jslib`) integrated into the Unity project.  
   Make sure you have:
   - `index.jslib` (containing JavaScript methods).
@@ -43,7 +44,19 @@ Samples/
     YesTMABridgeActions.cs
 ```
 
-## Getting Started
+## Installation
+
+### Install via Unity Package Manager
+
+1. In the Unity Editor menu bar, select **Window > Package Manager**.
+2. Click the **+** button in the top left corner and select **Add package from git URL**.
+3. Enter the following Git URL:
+   ```
+   https://github.com/Open-Yescoin/Telegram-Unity-Bridge.git?path=/packages/YesTMABridge
+   ```
+4. Click **Add** and wait for the package manager to complete the installation.
+
+### Manual Installation (Alternative)
 
 1. **Include the JavaScript Library:**  
    Place the `index.jslib` in `Runtime/`. Unity will automatically link this code into WebGL builds.
@@ -53,19 +66,26 @@ Samples/
    - `YesTMABridge.cs`: Contains `[DllImport]` declarations to bridge between C# and JavaScript.
    - `YesTMABridgeActions.cs` (Sample Script): Demonstrates how to call SDK methods and subscribe to events.
 
-3. **Add the TGMiniAppGameSDKProvider Component to the Scene:**
+## Getting Started
+
+1. **Configure WebGL Template (Important):**
+   - Copy the provided `WebGLTemplate` folder to your project's `Assets/WebGLTemplates` directory.
+   - Open **File > Build Settings**, select the WebGL platform, and click **Player Settings**.
+   - Under **Player Settings > Resolution and Presentation**, select the "Telegram-Unity-Bridge" template.
+
+2. **Add the TGMiniAppGameSDKProvider Component to the Scene:**
 
    - Create an empty `GameObject` in your Unity scene.
    - Attach `YesTMABridge.cs` to that GameObject.
    - This ensures the provider can handle callbacks and maintain event subscriptions.
 
-4. **Configure and Use the Sample Script (YesTMABridgeActions):**
+3. **Configure and Use the Sample Script (YesTMABridgeActions):**
 
    - Add `YesTMABridgeActions.cs` to another GameObject.
    - In `YesTMABridgeActions.cs`, a reference to `TGMiniAppGameSDKProvider` is obtained at runtime with `FindObjectOfType<TGMiniAppGameSDKProvider>()`.
    - Make sure `TGMiniAppGameSDKProvider` is present in the scene before `YesTMABridgeActions` is initialized.
 
-5. **Testing the Integration:**
+4. **Testing the Integration:**
    - When running the WebGL build in a compatible environment (Telegram MiniApp environment), calls to methods like `connectWallet()` or `payWithTon()` will invoke the corresponding JS functions.
    - Events such as `OnPhoneAccessReceived`, `OnWriteAccessReceived`, `OnContactReceived`, etc., will be triggered by the JS environment.
 
@@ -112,7 +132,7 @@ Samples/
 
 2. **UI and Orientation Control:**
 
-   - `SetHeaderColor()`, `SetBackgroundColor()`, and `SetBottomBarColor()` to adapt the mini-app's UI to your game’s theme.
+   - `SetHeaderColor()`, `SetBackgroundColor()`, and `SetBottomBarColor()` to adapt the mini-app's UI to your game's theme.
    - `EnableVerticalOrientation()` or `DisableVerticalOrientation()` to control layout.
    - `ShowBackButton()` or `HideBackButton()` to control navigation elements.
 
@@ -163,7 +183,7 @@ Samples/
 
 ## Conclusion
 
-The Telegram-Unity-Bridge simplifies integration between Unity and the Telegram MiniApp Game environment. By following the steps outlined above and customizing the example scripts, you can easily control wallet connections, retrieve user data, manipulate UI elements, share stories, and handle various device capabilities to enrich your users’ in-app experience.
+The Telegram-Unity-Bridge simplifies integration between Unity and the Telegram MiniApp Game environment. By following the steps outlined above and customizing the example scripts, you can easily control wallet connections, retrieve user data, manipulate UI elements, share stories, and handle various device capabilities to enrich your users' in-app experience.
 
 ## API Reference
 
