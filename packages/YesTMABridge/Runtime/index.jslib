@@ -127,11 +127,14 @@ var TGMiniAppGameSDKProvider = {
 
   /**
    * Initiates a payment using Ton cryptocurrency.
+   * @param {String} address - The recipient TON wallet address.
    * @param {Number} amount - The amount to pay.
    * @param {String} comment - An optional comment for the payment.
    */
-  payWithTon: function (amount, comment) {
-    window.TGMiniAppGameSDKInstance.payments.ton.pay(amount, comment);
+  payWithTon: function (address, amount, comment) {
+    var addressStr = UTF8ToString(address);
+    var commentStr = comment ? UTF8ToString(comment) : undefined;
+    window.TGMiniAppGameSDKInstance.payments.ton.pay(amount, addressStr, commentStr);
   },
 
   /**

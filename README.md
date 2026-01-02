@@ -22,7 +22,7 @@ The Telegram-Unity-Bridge is designed to facilitate communication between a Unit
 
 ## Prerequisites
 
-- Unity 2020.3 or newer (LTS recommended).
+- Unity 2020.3 or newer (LTS recommended). **Unity 6.1 is fully supported.**
 - A WebGL build target, as the SDK uses JavaScript libraries and browser-specific capabilities.
 - **WebGL Template Support**: We provide a React-based WebGL template for optimized interface adaptation in the Telegram MiniApp environment. You can find the related resources in the [apps/WebGLTemplate directory](https://github.com/Open-Yescoin/Telegram-Unity-Bridge/tree/main/apps/WebGLTemplate).
 - The JavaScript library file (`.jslib`) integrated into the Unity project.  
@@ -76,7 +76,8 @@ Samples/
 2. **Add the TGMiniAppGameSDKProvider Component to the Scene:**
 
    - Create an empty `GameObject` in your Unity scene.
-   - Attach `YesTMABridge.cs` to that GameObject.
+   - **Add Component** → Search for `TGMiniAppGameSDKProvider` and add it to the GameObject.
+   - **Note:** `TGMiniAppGameSDKProvider` is a MonoBehaviour class defined in `YesTMABridge.cs`. You can attach it directly from the Unity Inspector.
    - This ensures the provider can handle callbacks and maintain event subscriptions.
 
 3. **Configure and Use the Sample Script (YesTMABridgeActions):**
@@ -128,7 +129,7 @@ Samples/
    - `ConnectWallet()` to initiate a connection.
    - `CheckWalletConnection()` to verify connection status.
    - `GetWalletAddress()` to retrieve the user's wallet address.
-   - `PayWithTON()` to process a Ton payment.
+   - `PayWithTON()` to process a Ton payment. **Note:** Make sure to provide a valid recipient wallet address.
 
 2. **UI and Orientation Control:**
 
@@ -199,9 +200,10 @@ The Telegram-Unity-Bridge simplifies integration between Unity and the Telegram 
   Returns `true` if a wallet is currently connected, otherwise `false`.
 - **getWalletAddress() : string**  
   Returns the currently connected wallet address as a string.
-- **payWithTon(int amount, string comment)**  
+- **payWithTon(string address, float amount, string comment)**  
   Initiates a payment using Ton cryptocurrency.
   - **Parameters:**
+    - `address`: The recipient TON wallet address.
     - `amount`: The amount of Ton to pay.
     - `comment`: An optional message or note.
 
@@ -332,6 +334,12 @@ public class MyExample : MonoBehaviour
         // Get user info
         TMAUser user = TGMiniAppGameSDKProvider.GetUserInfo();
         Debug.Log("User first name: " + user.firstName);
+
+        // Pay with TON (example)
+        string recipientAddress = "YOUR_TON_WALLET_ADDRESS";
+        float amount = 0.1f;
+        string comment = "Payment for services";
+        TGMiniAppGameSDKProvider.payWithTon(recipientAddress, amount, comment);
     }
 
     void OnDestroy()

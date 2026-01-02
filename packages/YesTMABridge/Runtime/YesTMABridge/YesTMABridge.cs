@@ -165,8 +165,11 @@ namespace YesTMABridge
         /// <summary>
         /// Initiates a payment using Ton cryptocurrency.
         /// </summary>
+        /// <param name="address">The recipient TON wallet address.</param>
+        /// <param name="amount">The amount of Ton to pay.</param>
+        /// <param name="comment">An optional comment for the payment.</param>
         [DllImport("__Internal")]
-        public static extern void payWithTon(float amount, string comment);
+        public static extern void payWithTon(string address, float amount, string comment);
 
         /// <summary>
         /// Retrieves the launch parameters of the application.
