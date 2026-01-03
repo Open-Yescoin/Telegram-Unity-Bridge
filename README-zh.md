@@ -22,7 +22,7 @@ Telegram-Unity-Bridge 旨在简化 Unity 应用与 Telegram MiniApp 游戏环境
 
 ## 先决条件
 
-- Unity 2020.3 及以上版本（建议使用 LTS 版本）。
+- Unity 2020.3 及以上版本（建议使用 LTS 版本）。**完全支持 Unity 6.1。**
 - 需要将目标平台设置为 WebGL，因为 SDK 利用 JavaScript 库和特定于浏览器的能力。
 - **WebGL 模板支持**：我们提供了基于 React 实现的 WebGL 模板，用于优化 Telegram MiniApp 环境下的界面适配。您可以在 [apps/WebGLTemplate 目录](https://github.com/Open-Yescoin/Telegram-Unity-Bridge/tree/main/apps/WebGLTemplate) 中找到相关资源。
 
@@ -70,7 +70,8 @@ Samples/
 
 2. **在场景中添加 TGMiniAppGameSDKProvider 组件：**
    - 在 Unity 场景中创建一个空的 `GameObject`。
-   - 将 `YesTMABridge.cs` 附加到该 GameObject 上。
+   - **添加组件** → 搜索 `TGMiniAppGameSDKProvider` 并将其添加到 GameObject。
+   - **注意：** `TGMiniAppGameSDKProvider` 是在 `YesTMABridge.cs` 中定义的 MonoBehaviour 类。您可以直接从 Unity Inspector 中附加它。
    - 这样可确保提供者（provider）处理回调并维护事件订阅。
 
 3. **配置并使用示例脚本（YesTMABridgeActions）：**
@@ -122,7 +123,7 @@ Samples/
    - `ConnectWallet()` 启动钱包连接流程。
    - `CheckWalletConnection()` 检查当前钱包连接状态。
    - `GetWalletAddress()` 获取用户钱包地址。
-   - `PayWithTON()` 使用 Ton 进行支付。
+   - `PayWithTON()` 使用 Ton 进行支付。**注意：** 请确保提供有效的收款钱包地址。
 
 2. **UI 与屏幕方向控制：**
 
@@ -198,9 +199,10 @@ Samples/
 - **getWalletAddress() : string**  
   返回当前已连接钱包的地址。
 
-- **payWithTon(int amount, string comment)**  
+- **payWithTon(string address, float amount, string comment)**  
   启动使用 Ton 加密货币的支付流程。
   - **参数：**
+    - `address`：收款方的 TON 钱包地址。
     - `amount`：支付 Ton 的数量。
     - `comment`：可选备注信息。
 
@@ -365,6 +367,12 @@ public class MyExample : MonoBehaviour
         // 获取用户信息
         TMAUser user = TGMiniAppGameSDKProvider.GetUserInfo();
         Debug.Log("用户的名字: " + user.firstName);
+
+        // 使用 TON 支付（示例）
+        string recipientAddress = "YOUR_TON_WALLET_ADDRESS";
+        float amount = 0.1f;
+        string comment = "Payment for services";
+        TGMiniAppGameSDKProvider.payWithTon(recipientAddress, amount, comment);
     }
 
     void OnDestroy()

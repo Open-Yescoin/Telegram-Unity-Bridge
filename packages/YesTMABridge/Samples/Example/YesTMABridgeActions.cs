@@ -114,9 +114,10 @@ public class YesTMABridgeActions : MonoBehaviour
     public void PayWithTON()
     {
         Debug.Log("PayWithTON method called");
+        string address = "YOUR_TON_WALLET_ADDRESS"; // Recipient TON wallet address
         float amount = 0.1f; // Example amount
         string comment = "Payment for services";
-        TGMiniAppGameSDKProvider.payWithTon(amount, comment);
+        TGMiniAppGameSDKProvider.payWithTon(address, amount, comment);
     }
 
     /// <summary>
