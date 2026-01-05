@@ -3,23 +3,29 @@
 layout: home
 
 hero:
-  name: "Open Yes"
-  text: "Open Yes Documents"
-  tagline: My great project tagline
+  name: "Telegram-Unity-Bridge"
+  text: "Integration Guide"
+  tagline: Bridge Unity applications with Telegram MiniApp Game SDK environment
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get Started
+      link: /getting-started
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: API Reference
+      link: /api-reference
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Wallet Integration
+    details: Manage wallet connections and process TON payments seamlessly within your Unity game
+  - title: Mini-App Control
+    details: Control UI elements, orientation, and viewport settings to create immersive experiences
+  - title: Device Capabilities
+    details: Access device features like contacts, phone access, vibration, and clipboard functionality
+  - title: Social Features
+    details: Share stories, open links, and interact with the Telegram environment
+  - title: User Information
+    details: Retrieve launch parameters, user data, and initialization information
+  - title: Easy Integration
+    details: Simple setup via Unity Package Manager with comprehensive C# bindings
 ---
 
